@@ -6,8 +6,8 @@
 	</head>
 	<body ondblclick="Background()">
 		<h1 onclick="Part2(this)" >Another Brick in the Wall</h1>
-		<h3 onclick="Desc()">Pink Floyd</h3>
-		<p id="1" onclick="Italic(this)" oncopy= >We don't need no education<br>
+		<h3 onclick="Desc(), AddImg()">Pink Floyd</h3>
+		<p id="1" onclick="Italic(this)" oncopy="CopyAlert()" >We don't need no education<br>
 		We don't need no thought control<br>
 		No dark sarcasm in the classroom<br>
 		Teachers leave them kids alone<br>
@@ -37,8 +37,13 @@
 				document.body.style.backgroundColor="yellow";
 				}
 			function CopyAlert(){
-				alert()
+				alert("Copyrights")
 				}
+			function AddImg(){
+			var img =document.createElement("IMG");
+			img.setAttribute("src","https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg");
+			document.body.appendChild(img);
+			}
 			
 			
 		</script>
