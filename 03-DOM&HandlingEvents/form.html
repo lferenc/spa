@@ -11,13 +11,20 @@
 	<form>
 		<p>University:<br><input type="text"></p>
 		<p>Address:<br><input type="text"></p>
-		<button type="button">Hint</button>
+		<button type="button" onclick="Insert()">Hint</button>
 	</form>
 
 	<script>
 		// a JavaScript code here ...
 		var university = "Cracow University of Economics";
 		var address = "Rakowicka 27, Krakow, POLAND";
+		function Insert(){	
+			document.getElementsByTagName("input")[0].setAttribute("value",`${university}`);
+			document.getElementsByTagName("input")[1].setAttribute("value",`${address}`);
+
+
+
+		}
 
 	</script>
 </body>
