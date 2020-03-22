@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>Chart</title>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css">
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <canvas id="chart">
+
+    </canvas>
+    <script>
+ let chart = document.getElementById("chart").getContext("2d")
+        let Chart1 = new Chart(chart, {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Price',
+                    data:  []
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Gold prices - last 10 days',
+                    fontSize: 50
+                }
+            }
+        })
+
+        const connection = () => {
+            var method = "GET"
+            var api = `http://api.nbp.pl/api/cenyzlota/last/10?format=json`
+            var x = new XMLHttpRequest()
+            x.open(method, api)
+            x.onreadystatechange = function() {
+                if(this.readyState == 4 && this.status == 200) {
+                    let gold = JSON.parse(this.responseText)
+                    for(let item of gold) {
+                        Chart1.data.labels.push(item.data)
+                        Chart1.data.datasets[0].data.push(item.cena)
+                        Chart1.update()
+                    }
+                }
+            }
+            x.send()
+        }
+
+        connection()
+    </script>
+  </body>
+</html>

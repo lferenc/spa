@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Currency</title>
+	</head>
+	<body>
+		<h1>Currencies</h1>
+		<p id="eur"></p>
+		<p id="usd"></p>
+		<p id="gbp"></p>
+
+		<script>
+			function connect  ()  {
+				const tab = ['eur', 'usd', 'gbp']
+				let method = "GET"
+				    tab.forEach((item) => {
+					let req = new XMLHttpRequest()
+					let api = `http://api.nbp.pl/api/exchangerates/rates/a/${item}/?format=json`
+					req.open(method, api)
+					req.onreadystatechange = function() {
+						if(this.readyState == 4 && this.status == 200) {
+							let currency = JSON.parse(this.responseText)
+							document.getElementById(`${item}`).innerHTML = `${item.toUpperCase()} : ${currency.rates[0].mid} PLN`
+						}
+					}
+                    req.send()
+				})
+			}
+            window.onload=connect;
+		</script>
+    
+	</body>
+</html>
