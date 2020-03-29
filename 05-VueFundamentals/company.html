@@ -1,9 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <style>
+  table {
+    border-collapse: collapse;
+  }
+  
+  table, td, th {
+    border: 1px solid black;
+  }
+  </style>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
+  <div id="app">
+    <table align="center" > 
+      <td width=600>
+        <p align="center"> <b>{{company.toUpperCase()}}</b></p>
+        <p align="center"> {{address}}</p>
+        <p align="center">{{postcode}} {{city}}</p>
+        <p align="center">tel. {{landline}}, {{mobile}}</p>
+        <p align="center"> <a v-bind:href="web">{{web}}</a></p>
+        <p></p>
+      </td>
+    </table>
+  </div>
   <script>
     var app = new Vue({
       el: '#app',

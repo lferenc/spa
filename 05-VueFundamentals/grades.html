@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        ul {
+    padding: 20px; 
+    list-style-type: none;
+
+}
+ul li {
+    float: left;
+    margin: 0 10px;
+    padding: 0.5 px;
+}
+    </style>
+</head>
+<body>
+  <div id="app">
+    
+<p> Grades:
+      <span v-for="grade in grades">
+            {{grade}}
+      </span>
+      </p>
+      <p>Average: {{CalcAvg()}}</p>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        grades: [
+          1,
+          2,
+          5,
+          6,
+          1,
+          5,
+          3,
+          3
+      ]
+      },
+      methods:
+      {
+            CalcAvg: function(){
+                let sum =0;
+                for(grade of this.grades){
+                    sum=sum+grade;
+
+                }
+                let avg=sum/this.grades.length;
+                return avg;
+            }
+      }
+
+    });
+  </script>
+
+</body>
+</html>
